@@ -41,37 +41,41 @@ document.querySelector('.roll-dice').addEventListener('click', () => {
     } else if (rollCount = maxRollCount) {
         scores[activePlayer] += roundScore;
         console.log(scores);
-        activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
         
-        rollCount = 0;
-        roundScore = 0;
-
-        document.querySelector('.player-0-panel').classList.toggle('active');
-        document.querySelector('.player-1-panel').classList.toggle('active');
-        var playerOne = document.querySelector('.current-player-0').textContent;
-        var playerTwo = document.querySelector('.current-player-1').textContent;
-
-        // console.log(scores[activePlayer]);
-
-
-        if (scores[1] !== 0) {
-            if (playerOne > playerTwo) {
-                playerWins[0] += 1;
-                document.querySelector('.total-player-0').textContent = playerWins[0];
-                alert("Player 1 Wins");
-            } else {
-                playerWins[1] += 1;
-                document.querySelector('.total-player-1').textContent = playerWins[1];
-                alert("Player 2 Wins");
-            }
-        }
-
-        scores = [0, 0];
-        
-        
+        nextPlayer();
         
         
     }
     
-    
 });
+
+function nextPlayer(){
+    activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
+
+    rollCount = 0;
+    roundScore = 0;
+
+    document.querySelector('.player-0-panel').classList.toggle('active');
+    document.querySelector('.player-1-panel').classList.toggle('active');
+    var playerOne = document.querySelector('.current-player-0').textContent;
+    var playerTwo = document.querySelector('.current-player-1').textContent;
+
+    // console.log(scores[activePlayer]);
+
+
+    if (scores[1] !== 0) {
+        if (playerOne > playerTwo) {
+            playerWins[0] += 1;
+            document.querySelector('.total-player-0').textContent = playerWins[0];
+            alert("Player 1 Wins");
+        } else {
+            playerWins[1] += 1;
+            document.querySelector('.total-player-1').textContent = playerWins[1];
+            alert("Player 2 Wins");
+        }
+    }
+
+    scores = [0, 0];
+
+
+}
